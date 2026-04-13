@@ -4,13 +4,6 @@ import javax.swing.*;
 import java.util.Map;
 import java.util.function.UnaryOperator;
 
-/**
- * Одна строка настройки: чекбокс в интерфейсе + «рецепт», как обернуть {@link Meal} декоратором.
- * <p>
- * Через {@link Map} выбираем либо {@link UnaryOperator#identity()} (зарубка не стоит),
- * либо конкретный декоратор — без {@code if} и {@code switch}, как просили в задании.
- * </p>
- */
 public final class ModifierBinding {
 
     private final JCheckBox notch;
@@ -25,9 +18,7 @@ public final class ModifierBinding {
         return notch;
     }
 
-    /**
-     * Если зарубка отмечена — накладываем декоратор, иначе возвращаем то же яство.
-     */
+    /** Если зарубка отмечена — декоратор, иначе возвращаем то же самое.*/
     public Meal fold(Meal base) {
         UnaryOperator<Meal> identity = UnaryOperator.identity();
         Map<Boolean, UnaryOperator<Meal>> branch = Map.of(
