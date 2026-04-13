@@ -6,14 +6,7 @@ import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Главное окно приложения («руническая скрежаль») по заданию из методички.
- * <p>
- * Здесь только интерфейс: чекбоксы-модификаторы, кнопка заказа базового рагу и список истории.
- * Само блюдо и надбавки к цене считаются через {@link Meal} и декораторы — так в коде нет
- * длинных {@code if}/{@code switch} по типам добавок (требование преподавателя).
- * </p>
- */
+/** «руническая скрежаль»
 public class RunicStewFrame extends JFrame {
 
     private final OrderScroll scroll = new OrderScroll();
@@ -76,12 +69,6 @@ public class RunicStewFrame extends JFrame {
         refreshAll();
     }
 
-    /**
-     * Собираем текущее «яство»: начинаем с {@link NordicStew}, затем по списку зарубок
-     * либо оборачиваем декоратором, либо оставляем как есть (см. {@link ModifierBinding#fold}).
-     * {@code sequential()} — на всякий случай, чтобы порядок добавок в строке заказа не «поплыл»
-     * при случайном параллельном стриме.
-     */
     private Meal composeMeal() {
         return bindings.stream()
                 .sequential()
@@ -92,11 +79,6 @@ public class RunicStewFrame extends JFrame {
                 );
     }
 
-    /**
-     * По условию: не больше трёх модификаторов; если выбрано три — остальные чекбоксы «в камень»
-     * ({@code setEnabled(false)}), пока не снимешь одну отметку.
-     * Вместо {@code if} по каждой зарубке считаем, сколько выбрано, и включаем/выключаем через выражения и {@link Map}.
-     */
     private void applyStoneCurseToNotches() {
         long selected = bindings.stream()
                 .mapToLong(b -> Map.of(true, 1L, false, 0L).get(b.notch().isSelected()))
