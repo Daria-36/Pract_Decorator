@@ -85,7 +85,6 @@ public class RunicStewFrame extends JFrame {
                 .sum();
         bindings.forEach(b -> {
             JCheckBox n = b.notch();
-            // жива зарубка, если выбрано меньше трёх ИЛИ эта уже отмечена (её можно снять)
             boolean alive = (selected < 3) | n.isSelected();
             n.setEnabled(alive);
             Map<Boolean, String> tips = Map.of(
