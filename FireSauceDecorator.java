@@ -12,12 +12,10 @@ public class FireSauceDecorator extends MealDecorator {
         super(wrapped);
     }
 
-    @Override
     public int getPriceSeptims() {
         return super.getPriceSeptims() + EXTRA;
     }
 
-    @Override
     public String describeOrderLine() {
         return super.describeOrderLine() + " +огненный соус";
     }
