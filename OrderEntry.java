@@ -1,8 +1,5 @@
 package ru.university.decorator;
 
-/**
- * Запись для «свитка заказов»: время, полное имя (как вернул {@link Meal#describeOrderLine()}) и цена в септимах.
- */
 public final class OrderEntry {
 
     private final String timeRune;
