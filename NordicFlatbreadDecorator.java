@@ -1,6 +1,6 @@
 package ru.university.decorator;
 
-/** Декоратор «нордская лепешка» (+7 септимов). */
+/** +7 септ. */
 public class NordicFlatbreadDecorator extends MealDecorator {
 
     private static final int EXTRA = 7;
@@ -9,12 +9,10 @@ public class NordicFlatbreadDecorator extends MealDecorator {
         super(wrapped);
     }
 
-    @Override
     public int getPriceSeptims() {
         return super.getPriceSeptims() + EXTRA;
     }
 
-    @Override
     public String describeOrderLine() {
         return super.describeOrderLine() + " +нордская лепешка";
     }
