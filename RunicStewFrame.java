@@ -109,10 +109,15 @@ private void applyStoneCurseToNotches() {
         totalGold.setText("Счёт золота по свитку: " + scroll.totalSeptimsSpent() + " септимов");
     }
 
-    private void submitOrder() {
-        Meal dish = composeMeal();
-        scroll.record(dish);
-        bindings.forEach(b -> b.notch().setSelected(false));
-        refreshAll();
+   private void submitOrder() {
+    Meal dish = composeMeal();
+
+    scroll.record(dish);
+
+    for (ModifierBinding binding : bindings) {
+        binding.notch().setSelected(false);
+    }
+
+    refreshAll();
     }
 }
