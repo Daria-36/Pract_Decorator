@@ -18,7 +18,7 @@ public final class OrderScroll {
         return listModel;
     }
 
-    /** Записываем заказ с временем*/
+
     public void record(Meal meal) {
         String time = LocalTime.now().format(TIME_RUNE);
         OrderEntry entry = new OrderEntry(time, meal.describeOrderLine(), meal.getPriceSeptims());
