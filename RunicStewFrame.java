@@ -69,31 +69,39 @@ public class RunicStewFrame extends JFrame {
         refreshAll();
     }
 
-    private Meal composeMeal() {
-        return bindings.stream()
-                .sequential()
-                .reduce(
-                        (Meal) new NordicStew(),
-                        (Meal dish, ModifierBinding binding) -> binding.fold(dish),
-                        (left, right) -> right
-                );
+private Meal composeMeal() {
+    Meal dish = new NordicStew();
+
+    for (ModifierBinding binding : bindings) {
+        dish = binding.fold(dish);
     }
 
-    private void applyStoneCurseToNotches() {
-        long selected = bindings.stream()
-                .mapToLong(b -> Map.of(true, 1L, false, 0L).get(b.notch().isSelected()))
-                .sum();
-        bindings.forEach(b -> {
-            JCheckBox n = b.notch();
-            boolean alive = (selected < 3) | n.isSelected();
-            n.setEnabled(alive);
-            Map<Boolean, String> tips = Map.of(
-                    true, "Живая зарубка — можно менять выбор",
-                    false, "Камень: уже три добавки, сперва сними одну зарубку"
-            );
-            n.setToolTipText(tips.get(alive));
-        });
+    return dish;
+}
+
+private void applyStoneCurseToNotches() {
+    long selected = 0;
+
+    for (ModifierBinding binding : bindings) {
+        if (binding.notch().isSelected()) {
+            selected++;
+        }
     }
+
+    for (ModifierBinding binding : bindings) {
+        JCheckBox n = binding.notch();
+
+        boolean alive = selected < 3 || n.isSelected();
+
+        n.setEnabled(alive);
+
+        if (alive) {
+            n.setToolTipText("Живая зарубка — можно менять выбор");
+        } else {
+            n.setToolTipText("Камень: уже три добавки, сперва сними одну зарубку");
+        }
+    }
+}
 
     private void refreshAll() {
         applyStoneCurseToNotches();
