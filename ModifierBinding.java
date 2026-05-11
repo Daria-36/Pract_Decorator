@@ -18,7 +18,7 @@ public final class ModifierBinding {
         return notch;
     }
 
-    /** Если зарубка отмечена — декоратор, иначе возвращаем то же самое.*/
+    /Если зарубка отмечена — декоратор, иначе возвращаем то же самое./
     public Meal fold(Meal base) {
         UnaryOperator<Meal> identity = UnaryOperator.identity();
         Map<Boolean, UnaryOperator<Meal>> branch = Map.of(
