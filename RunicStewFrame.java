@@ -102,7 +102,6 @@ private void applyStoneCurseToNotches() {
         }
     }
 }
-
     private void refreshAll() {
         applyStoneCurseToNotches();
         Meal dish = composeMeal();
