@@ -135,12 +135,4 @@ public class RunicStewFrame extends JFrame implements ActionListener, ItemListen
 
         refreshAll();
     }
-
-    public void actionPerformed(ActionEvent event) {
-        submitOrder();
-    }
-
-    public void itemStateChanged(ItemEvent event) {
-        refreshAll();
-    }
 }
