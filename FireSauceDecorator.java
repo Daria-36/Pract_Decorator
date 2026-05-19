@@ -2,7 +2,7 @@ package ru.university.decorator;
 
 public class FireSauceDecorator extends MealDecorator {
 
-    private static final int EXTRA = 10;
+    private static int EXTRA = 10;
 
     public FireSauceDecorator(Meal wrapped) {
         super(wrapped);
