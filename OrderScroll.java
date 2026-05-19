@@ -30,7 +30,6 @@ public final class OrderScroll {
         for (OrderEntry entry : entries) {
             total = total + entry.priceSeptims();
         }
-
         return total;
     }
 }
