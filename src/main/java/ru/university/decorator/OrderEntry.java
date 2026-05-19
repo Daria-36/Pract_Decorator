@@ -1,0 +1,30 @@
+package ru.university.decorator;
+
+public final class OrderEntry {
+
+    private final String timeRune;
+    private final String fullOrderName;
+    private final int priceSeptims;
+
+    public OrderEntry(String timeRune, String fullOrderName, int priceSeptims) {
+        this.timeRune = timeRune;
+        this.fullOrderName = fullOrderName;
+        this.priceSeptims = priceSeptims;
+    }
+
+    public String timeRune() {
+        return timeRune;
+    }
+
+    public String fullOrderName() {
+        return fullOrderName;
+    }
+
+    public int priceSeptims() {
+        return priceSeptims;
+    }
+
+    public String toScrollLine() {
+        return timeRune + "  |  " + fullOrderName + "  |  " + priceSeptims + " септимов";
+    }
+}
