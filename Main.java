@@ -1,7 +1,5 @@
 package ru.university.decorator;
 
-import javax.swing.*;
-
 public final class Main {
 
     private Main() {
