@@ -1,9 +1,8 @@
 package ru.university.decorator;
 
-/** +7 септ. */
 public class NordicFlatbreadDecorator extends MealDecorator {
 
-    private static final int EXTRA = 7;
+    private static int EXTRA = 7;
 
     public NordicFlatbreadDecorator(Meal wrapped) {
         super(wrapped);
